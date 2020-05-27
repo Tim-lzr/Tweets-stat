@@ -1,0 +1,23 @@
+#!/home_local/isduser/anaconda3/bin/python
+# -*- coding: utf-8 -*-
+
+import pandas as pd
+import numpy
+import cgi
+import json
+import cgitb
+cgitb.enable()
+import sys
+print("Content-Type: text/json")
+print()
+print()
+data = pd.read_csv('data/tweets.csv')
+
+form = cgi.FieldStorage()
+name =form.getvalue("chaine")
+
+rep  = data.iloc[numpy.where(name  in str( data['text']))[0], :]  
+reponse  = rep.to_json()
+print(reponse)
+
+

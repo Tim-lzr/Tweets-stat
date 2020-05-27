@@ -1,0 +1,22 @@
+#!/home_local/isduser/anaconda3/bin/python
+# -*- coding: utf-8 -*-
+
+
+print("Content-Type:text/html")
+print()
+print()
+import cgi
+import cgitb
+cgitb.enable()
+import sys
+form = cgi.FieldStorage()
+name =form.getvalue("u")
+
+
+print("""
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
+<head><title>Un titre</title>
+<meta http-equiv="Content-Type"  content="text/html;charset=utf-8" /></head>
+<body><h1><h1>Hello %s !</h1> % (name)
+</h1><p> premier paragraphe de texte. On met un <a href="http://www.lri.fr">lien</a> ici.</p><!-- on peut aussi mettre des commentaires --></body></html>""")
